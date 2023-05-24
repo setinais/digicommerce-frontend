@@ -1,0 +1,20 @@
+server {
+  listen ${NGINX_PORT};
+  listen [::]:${NGINX_PORT};
+  autoindex ${NGINX_AUTO_INDEX};
+  client_max_body_size ${NGINX_CLIENT_MAX_BODY_SIZE};
+  disable_symlinks ${NGINX_DISABLE_SYMLINKS};
+  proxy_connect_timeout ${NGINX_PROXY_CONNECT_TIMEOUT};
+  proxy_read_timeout ${NGINX_PROXY_READ_TIMEOUT};
+  proxy_send_timeout ${NGINX_PROXY_SEND_TIMEOUT};
+  sendfile ${NGINX_SENDFILE};
+  location / {
+    root ${NGINX_ROOT};
+    index  index.html index.htm;
+    try_files $uri $uri/ /index.html;
+  }
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root ${NGINX_ROOT};
+  }
+}

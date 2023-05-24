@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: digicommerce
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    environment:
+      NGINX_AUTO_INDEX: "off"
+      NGINX_CLIENT_MAX_BODY_SIZE: "40M"
+      NGINX_DISABLE_SYMLINKS: "on"
+      NGINX_PORT: 80
+      NGINX_PROXY_CONNECT_TIMEOUT: 60
+      NGINX_PROXY_READ_TIMEOUT: 60
+      NGINX_PROXY_SEND_TIMEOUT: 60
+      NGINX_SENDFILE: "on"
