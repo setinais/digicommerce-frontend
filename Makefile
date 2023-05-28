@@ -17,4 +17,4 @@ rmiv:
 
 .PHONY: dev prod rm rmi rmiv
 clean:
-	rm -rf code/node_modules
+	rm -rf code/node_modules code/.next
